@@ -1,1 +1,49 @@
-print ("Hello World")
+import random
+import time
+
+passwordDigitCount = int(input ("how many digits? "))
+
+print("şifre oluşturulmaya başlanıyor...")
+time.sleep(1)
+
+numbers = [0,1,2,3,4,5,6,7,8,9]
+vowels = ["a", "e", "i", "o", "u"]
+consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t" ,"v", "w", "x", "y", "z"]
+# symbols = [".", ",", "!", "-", "_", "&", "*", ]
+choices = [numbers, vowels, consonants]
+generatedPassword = []
+for i in range(passwordDigitCount):
+    firstChoice = random.choice(choices)
+    print("hane" , i+1 , "seçiliyor")
+    time.sleep(1)
+    caseSelect = random.choice([0,1])
+    if firstChoice == numbers:
+        generatedCharacter = random.choice(numbers)
+        print("seçilen karakter" , generatedCharacter)
+        time.sleep(1)
+        generatedPassword.insert(i, generatedCharacter)
+    elif firstChoice == vowels:
+        if caseSelect == 0:
+            generatedCharacter = random.choice(vowels)
+            print("seçilen karakter" , generatedCharacter)
+            time.sleep(1)
+            generatedPassword.insert(i, generatedCharacter)
+        elif caseSelect == 1:
+            generatedCharacter = random.choice(vowels).upper()
+            print("seçilen karakter büyük" , generatedCharacter)
+            time.sleep(1)
+            generatedPassword.insert(i, generatedCharacter)
+    elif firstChoice == consonants:
+        if caseSelect == 0:
+            generatedCharacter = random.choice(consonants)
+            print("seçilen karakter" , generatedCharacter)
+            time.sleep(1)
+            generatedPassword.insert(i, generatedCharacter)
+        elif caseSelect == 1:
+            generatedCharacter = random.choice(consonants).upper()
+            print("seçilen karakter büyük" , generatedCharacter)
+            time.sleep(1)
+            generatedPassword.insert(i, generatedCharacter)
+
+print("PASSWORD")
+print("".join(map(str, generatedPassword)))
